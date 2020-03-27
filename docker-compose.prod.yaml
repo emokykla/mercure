@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+    mercure:
+        restart: unless-stopped
+        labels:
+            - traefik.http.routers.mercure.tls=true
+            - traefik.http.routers.mercure.tls.certresolver=letsencrypt
