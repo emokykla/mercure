@@ -6,3 +6,6 @@ services:
         labels:
             - traefik.http.routers.mercure.tls=true
             - traefik.http.routers.mercure.tls.certresolver=letsencrypt
+            - traefik.http.services.mercure.loadbalancer.server.port=443
+            - traefik.http.routers.mercure.service=mercure
+            - traefik.http.routers.mercure.rule=Host(`${APP_DOMAIN_FOR_TRAEFIK}`)

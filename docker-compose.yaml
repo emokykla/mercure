@@ -8,8 +8,6 @@ services:
             - .env.${APP_ENV:-dev} # load by stage, default to dev
         labels:
             - traefik.enable=true
-            - traefik.http.routers.mercure.rule=Host(`${APP_DOMAIN_FOR_TRAEFIK}`)
-            - traefik.http.routers.mercure.service=mercure
             - traefik.http.services.mercure.loadbalancer.server.port=80
             - traefik.docker.network=traefik
         networks:
