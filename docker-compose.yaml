@@ -5,14 +5,4 @@ services:
         image: dunglas/mercure
         container_name: mercure
         env_file:
-            - .env.${APP_ENV:-dev} # load by stage, default to dev
-        labels:
-            - traefik.enable=true
-            - traefik.http.services.mercure.loadbalancer.server.port=80
-            - traefik.docker.network=traefik
-        networks:
-            - traefik
-networks:
-    traefik:
-        external:
-            name: traefik
+            - .env.dev

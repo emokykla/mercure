@@ -1,0 +1,7 @@
+version: '3.7'
+
+services:
+    mercure:
+        ports:
+            - 1580:80
+            - 15443:443
