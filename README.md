@@ -24,6 +24,26 @@ There is shortcut command for starting:
 bin/start-prod.sh
 ```
 
+# Prod stages: benderis
+Mercure service for use with dev tools. Deployed to `benderis` and used behind Traefik.
+[https://mercure.emokykla.win](https://mercure.emokykla.win)
+
+## Deploy
+Just run script. It will copy files (local changes are copied, not commited ones!) and restarts services.
+```bash
+bin/deploy-benderis.sh
+```
+
+## Run docker-compose
+To run docker-compose commands use `bin/dc-benderis.sh` instead of `docker-compose`. E.g.
+```bash
+bin/dc-benderis.sh up mercure
+```
+There is shortcut command for starting:
+```bash
+bin/start-benderis.sh
+```
+
 # Dev
 
 ## Run docker-compose
