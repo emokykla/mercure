@@ -6,6 +6,5 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 APP_DIR=${DIR}/..
 
-set -eux
 cd ${APP_DIR}
-APP_ENV=prod docker-compose --env-file=.env.prod -f docker-compose.yaml -f docker-compose.prod.yaml up "$@" mercure
+bin/dc-prod.sh up "$@" mercure

@@ -3,5 +3,6 @@ version: '3.7'
 services:
     mercure:
         restart: unless-stopped
-        env_file:
-            - .env.prod
+        ports:
+            - 80:80
+            - 443:443
