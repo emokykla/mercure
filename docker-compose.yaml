@@ -2,7 +2,8 @@ version: '3'
 
 services:
     mercure:
-        image: dunglas/mercure
+        # https://github.com/dunglas/mercure/releases
+        image: dunglas/mercure:v0.10.4
         container_name: mercure
         env_file:
             - .env # always load as general configuration
