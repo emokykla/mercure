@@ -7,5 +7,4 @@ services:
             - 80:80
             - 443:443
         logging:
-            options:
-                max-size: "50m"
+            driver: none
