@@ -32,12 +32,13 @@ ssh ${APP_SERVER} mkdir -p ${REMOTE_PATH}/bin
 rsync -az \
     ${APP_DIR}/bin/includes \
     ${APP_DIR}/bin/start-${APP_ENV}.sh \
+    ${APP_DIR}/bin/restart-${APP_ENV}.sh \
     ${APP_DIR}/bin/dc-${APP_ENV}.sh \
     ${APP_SERVER}:${REMOTE_PATH}/bin/
 echo Done.
 
-echo Starting...
-ssh ${APP_SERVER} "cd ${REMOTE_PATH} ; bin/start-${APP_ENV}.sh -d"
+echo Restarting...
+ssh ${APP_SERVER} "cd ${REMOTE_PATH} ; bin/restart-${APP_ENV}.sh -d"
 echo Done.
 
 echo All done, great success!
