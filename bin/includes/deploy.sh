@@ -20,25 +20,23 @@ REMOTE_PATH=/home/deploy/dev/mercure
 ssh ${APP_SERVER} mkdir -p ${REMOTE_PATH}
 
 echo Copying files...
-rsync -az \
-    ${APP_DIR}/.env \
-    ${APP_DIR}/.env.${APP_ENV} \
+rsync --archive --compress \
     ${APP_DIR}/.gitignore \
     ${APP_DIR}/docker-compose.${APP_ENV}.yaml \
     ${APP_DIR}/docker-compose.yaml \
     ${APP_DIR}/README.md \
     ${APP_SERVER}:${REMOTE_PATH}
 ssh ${APP_SERVER} mkdir -p ${REMOTE_PATH}/bin
-rsync -az \
+rsync --archive --compress \
     ${APP_DIR}/bin/includes \
     ${APP_DIR}/bin/start-${APP_ENV}.sh \
     ${APP_DIR}/bin/restart-${APP_ENV}.sh \
     ${APP_DIR}/bin/dc-${APP_ENV}.sh \
     ${APP_SERVER}:${REMOTE_PATH}/bin/
+ssh ${APP_SERVER} mkdir -p ${REMOTE_PATH}/caddy
+rsync --archive --compress \
+    ${APP_DIR}/caddy/Caddyfile.${APP_ENV} \
+    ${APP_SERVER}:${REMOTE_PATH}/caddy/
 echo Done.
 
-echo Restarting...
-ssh ${APP_SERVER} "cd ${REMOTE_PATH} ; bin/restart-${APP_ENV}.sh -d"
-echo Done.
-
-echo All done, great success!
+echo Now depending on changes restart, rebuild or just reload caddy config.

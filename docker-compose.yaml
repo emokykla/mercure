@@ -3,8 +3,16 @@ version: '3'
 services:
     mercure:
         # https://github.com/dunglas/mercure/releases
-        image: dunglas/mercure:v0.10.4
+        image: dunglas/mercure:v0.11
         container_name: mercure
-        env_file:
-            - .env # always load as general configuration
-            - .env.${APP_ENV:-dev} # load override by stage, default to dev
+        volumes:
+            - ./caddy/data:/data
+            - ./caddy/config:/config
+            # load config by stage, default to dev
+            - ./caddy/Caddyfile.${APP_ENV:-dev}:/etc/caddy/Caddyfile:ro
+        logging:
+            driver: local
+            options:
+                max-size: '10m'
+                max-file: '3'
+                mode: 'non-blocking'

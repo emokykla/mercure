@@ -1,3 +1,13 @@
+# Caddy
+
+## Reload configuration after change
+```shell
+# validate
+bin/dc-prod.sh exec mercure caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
+# reaload
+bin/dc-prod.sh exec mercure caddy reload --config /etc/caddy/Caddyfile --adapter caddyfile
+```
+
 # Prerequisites to run it in prod
 - docker
 - docker-compose

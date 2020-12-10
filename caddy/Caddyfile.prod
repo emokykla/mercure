@@ -1,0 +1,28 @@
+# https://caddyserver.com/docs/caddyfile
+{
+    # HTTP/3 support
+    experimental_http3
+}
+
+mercure.emapamokos.lt {
+    log {
+        level warn
+    }
+
+    route {
+        redir / /.well-known/mercure/ui/
+        encode gzip
+
+        # https://mercure.rocks/docs/hub/config
+        mercure {
+            # Publisher JWT key
+            publisher_jwt "PG6@rJ14PRWM&P9FE1GwWipH5rnrmI8x"
+            # CORS
+            cors_origins *
+            # Allow anonymous subscribers
+            anonymous
+        }
+
+        respond "Not Found" 404
+    }
+}
