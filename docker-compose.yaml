@@ -5,13 +5,16 @@ services:
         # https://github.com/dunglas/mercure/releases
         image: dunglas/mercure:v0.11
         container_name: mercure
+        command: caddy run --config /etc/caddy/Caddy.json
         volumes:
             - ./caddy/data:/data
             - ./caddy/config:/config
             # load config by stage, default to dev
-            - ./caddy/Caddyfile.${APP_ENV:-dev}:/etc/caddy/Caddyfile:ro
+            - ./caddy/Caddyfile.${APP_ENV:-dev}:/etc/caddy/Caddyfile
+            - ./caddy/Caddy.${APP_ENV:-dev}.json:/etc/caddy/Caddy.json
         logging:
-            driver: local
+            # does not output any logs dc up in prod server
+            #driver: local
             options:
                 max-size: '10m'
                 max-file: '3'

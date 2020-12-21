@@ -36,6 +36,7 @@ rsync --archive --compress \
 ssh ${APP_SERVER} mkdir -p ${REMOTE_PATH}/caddy
 rsync --archive --compress \
     ${APP_DIR}/caddy/Caddyfile.${APP_ENV} \
+    ${APP_DIR}/caddy/Caddy.${APP_ENV}.json \
     ${APP_SERVER}:${REMOTE_PATH}/caddy/
 echo Done.
 

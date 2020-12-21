@@ -1,0 +1,106 @@
+{
+    "admin": {
+        "listen": "0.0.0.0:2019"
+    },
+    "apps": {
+        "http": {
+            "servers": {
+                "srv0": {
+                    "experimental_http3": true,
+                    "listen": [
+                        ":443"
+                    ],
+                    "routes": [
+                        {
+                            "handle": [
+                                {
+                                    "handler": "subroute",
+                                    "routes": [
+                                        {
+                                            "handle": [
+                                                {
+                                                    "handler": "subroute",
+                                                    "routes": [
+                                                        {
+                                                            "handle": [
+                                                                {
+                                                                    "handler": "static_response",
+                                                                    "headers": {
+                                                                        "Location": [
+                                                                            "/.well-known/mercure/ui/"
+                                                                        ]
+                                                                    },
+                                                                    "status_code": 302
+                                                                }
+                                                            ],
+                                                            "match": [
+                                                                {
+                                                                    "path": [
+                                                                        "/"
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "handle": [
+                                                                {
+                                                                    "encodings": {
+                                                                        "gzip": {}
+                                                                    },
+                                                                    "handler": "encode"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "handle": [
+                                                                {
+                                                                    "anonymous": true,
+                                                                    "cors_origins": [
+                                                                        "*"
+                                                                    ],
+                                                                    "handler": "mercure",
+                                                                    "publisher_jwt": {
+                                                                        "key": "PG6@rJ14PRWM\u0026P9FE1GwWipH5rnrmI8x"
+                                                                    },
+                                                                    "subscriber_jwt": {}
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "handle": [
+                                                                {
+                                                                    "body": "Not Found",
+                                                                    "handler": "static_response",
+                                                                    "status_code": 404
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "match": [
+                                {
+                                    "host": [
+                                        "mercure.emapamokos.lt"
+                                    ]
+                                }
+                            ],
+                            "terminal": true
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "logging": {
+        "logs": {
+            "default": {
+                "level": "warn"
+            }
+        }
+    }
+}

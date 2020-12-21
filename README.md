@@ -1,10 +1,24 @@
 # Caddy
 
 ## Reload configuration after change
+
+### Json
 ```shell
+# make sure config is changed
+bin/dc-prod.sh exec mercure cat /etc/caddy/Caddy.json
+# validate
+bin/dc-prod.sh exec mercure caddy validate --config /etc/caddy/Caddy.json
+# reload
+bin/dc-prod.sh exec mercure caddy reload --config /etc/caddy/Caddy.json
+```
+
+### Caddyfile
+```shell
+# make sure config is changed
+bin/dc-prod.sh exec mercure cat /etc/caddy/Caddyfile
 # validate
 bin/dc-prod.sh exec mercure caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
-# reaload
+# reload
 bin/dc-prod.sh exec mercure caddy reload --config /etc/caddy/Caddyfile --adapter caddyfile
 ```
 
