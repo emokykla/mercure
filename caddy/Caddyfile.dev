@@ -1,7 +1,5 @@
 # https://caddyserver.com/docs/caddyfile
 {
-    # HTTP/3 support
-    experimental_http3
     # enable metrics and make them available in docker
     admin 0.0.0.0:2019
 }

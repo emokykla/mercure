@@ -6,7 +6,6 @@
         "http": {
             "servers": {
                 "srv0": {
-                    "experimental_http3": true,
                     "listen": [
                         ":443"
                     ],

@@ -1,12 +1,13 @@
 # https://caddyserver.com/docs/caddyfile
 {
-    # HTTP/3 support
-    experimental_http3
     # enable metrics and make them available in docker
     admin 0.0.0.0:2019
 }
 
 mercure.emapamokos.lt {
+    # self-signed certificate if https enabled
+    #tls internal
+
     route {
         redir / /.well-known/mercure/ui/
         encode gzip
