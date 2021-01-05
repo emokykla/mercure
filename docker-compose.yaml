@@ -12,6 +12,10 @@ services:
             # load config by stage, default to dev
             - ./caddy/Caddyfile.${APP_ENV:-dev}:/etc/caddy/Caddyfile
             - ./caddy/Caddy.${APP_ENV:-dev}.json:/etc/caddy/Caddy.json
+#            - ./caddy/Caddyfile.dev:/etc/caddy/Caddyfile.dev
+#            - ./caddy/Caddy.dev.json:/etc/caddy/Caddy.dev.json
+#            - ./caddy/Caddyfile.prod:/etc/caddy/Caddyfile.prod
+#            - ./caddy/Caddy.prod.json:/etc/caddy/Caddy.prod.json
         logging:
             # does not output any logs dc up in prod server
             #driver: local

@@ -2,6 +2,7 @@
 {
     # enable metrics and make them available in docker
     admin 0.0.0.0:2019
+    email service@emokiniai.lt
 }
 
 mercure.emapamokos.lt {

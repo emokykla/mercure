@@ -11,6 +11,13 @@
                     ],
                     "routes": [
                         {
+                            "match": [
+                                {
+                                    "host": [
+                                        "mercure.emapamokos.lt"
+                                    ]
+                                }
+                            ],
                             "handle": [
                                 {
                                     "handler": "subroute",
@@ -81,17 +88,31 @@
                                     ]
                                 }
                             ],
-                            "match": [
-                                {
-                                    "host": [
-                                        "mercure.emapamokos.lt"
-                                    ]
-                                }
-                            ],
                             "terminal": true
                         }
                     ]
                 }
+            }
+        },
+        "tls": {
+            "automation": {
+                "policies": [
+                    {
+                        "subjects": [
+                            "mercure.emapamokos.lt"
+                        ],
+                        "issuers": [
+                            {
+                                "email": "service@emokiniai.lt",
+                                "module": "acme"
+                            },
+                            {
+                                "email": "service@emokiniai.lt",
+                                "module": "zerossl"
+                            }
+                        ]
+                    }
+                ]
             }
         }
     },
