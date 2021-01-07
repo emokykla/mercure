@@ -1,11 +1,15 @@
 # https://caddyserver.com/docs/caddyfile
 {
     # enable metrics and make them available in docker
-    admin 0.0.0.0:2019
+    #admin 0.0.0.0:2019
     email service@emokiniai.lt
+    # enable ssl certification staging when testing
+    #acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+    # sets all log levels to debug
+    #debug
 }
 
-mercure.emapamokos.lt {
+mercure2.emapamokos.lt {
     # self-signed certificate if https enabled
     #tls internal
 

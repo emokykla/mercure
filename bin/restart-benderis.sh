@@ -4,5 +4,5 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 APP_ENV=benderis
-APP_SERVER=mercure
+APP_SERVER=benderis
 source "${DIR}/includes/docker-compose-restart.sh"

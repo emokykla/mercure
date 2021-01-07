@@ -1,6 +1,10 @@
 {
-    "admin": {
-        "listen": "0.0.0.0:2019"
+    "logging": {
+        "logs": {
+            "default": {
+                "level": "warn"
+            }
+        }
     },
     "apps": {
         "http": {
@@ -14,7 +18,7 @@
                             "match": [
                                 {
                                     "host": [
-                                        "mercure.emapamokos.lt"
+                                        "mercure2.emapamokos.lt"
                                     ]
                                 }
                             ],
@@ -99,7 +103,7 @@
                 "policies": [
                     {
                         "subjects": [
-                            "mercure.emapamokos.lt"
+                            "mercure2.emapamokos.lt"
                         ],
                         "issuers": [
                             {
@@ -113,13 +117,6 @@
                         ]
                     }
                 ]
-            }
-        }
-    },
-    "logging": {
-        "logs": {
-            "default": {
-                "level": "warn"
             }
         }
     }

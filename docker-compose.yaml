@@ -3,8 +3,7 @@ version: '3'
 services:
     mercure:
         # https://github.com/dunglas/mercure/releases
-        image: dunglas/mercure:v0.11.0-rc.1
-        container_name: mercure
+        image: dunglas/mercure:v0.11.0-rc.2
         command: caddy run --config /etc/caddy/Caddy.json
         volumes:
             - ./caddy/data:/data
@@ -12,10 +11,6 @@ services:
             # load config by stage, default to dev
             - ./caddy/Caddyfile.${APP_ENV:-dev}:/etc/caddy/Caddyfile
             - ./caddy/Caddy.${APP_ENV:-dev}.json:/etc/caddy/Caddy.json
-#            - ./caddy/Caddyfile.dev:/etc/caddy/Caddyfile.dev
-#            - ./caddy/Caddy.dev.json:/etc/caddy/Caddy.dev.json
-#            - ./caddy/Caddyfile.prod:/etc/caddy/Caddyfile.prod
-#            - ./caddy/Caddy.prod.json:/etc/caddy/Caddy.prod.json
         logging:
             # does not output any logs dc up in prod server
             #driver: local

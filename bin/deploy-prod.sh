@@ -4,5 +4,5 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 APP_ENV=prod
-APP_SERVER=mercure
+APP_SERVER=mercure2
 source "${DIR}/includes/deploy.sh"
